@@ -1,4 +1,6 @@
 #include "../includes_usr/fileIO.h"
+#include <iostream>
+#include <fstream>
 using namespace std;
 /* clears, then loads books from the file filename
  * returns  COULD_NOT_OPEN_FILE if cannot open filename
@@ -7,6 +9,20 @@ using namespace std;
  * */
 int loadBooks(std::vector<book> &books, const char* filename)
 {
+	ifstream myInputfile;
+	myInputfile.open(filename);
+
+	if (!myInputfile.is_open())
+			return COULD_NOT_OPEN_FILE;
+
+	if (myInputfile.peek() == std::ifstream::traits_type::eof() )
+	{
+	   return NO_BOOKS_IN_LIBRARY;
+
+	}
+
+
+	myInputfile.close();
 	return SUCCESS;
 }
 
@@ -27,6 +43,20 @@ int saveBooks(std::vector<book> &books, const char* filename)
  * */
 int loadPatrons(std::vector<patron> &patrons, const char* filename)
 {
+	ifstream myInputfile;
+	myInputfile.open(filename);
+
+	if (!myInputfile.is_open())
+			return COULD_NOT_OPEN_FILE;
+
+	if (myInputfile.peek() == std::ifstream::traits_type::eof() )
+	{
+	   return NO_BOOKS_IN_LIBRARY;
+
+	}
+
+
+	myInputfile.close();
 	return SUCCESS;
 }
 
